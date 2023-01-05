@@ -2,8 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react"
 import { message } from 'antd'
 
 // const SERVER_IP = '192.168.0.144'
-const SERVER_IP = 'localhost'
-const clientWS = new WebSocket( 'ws://' + SERVER_IP + ':4000' )
+const clientWS = new WebSocket( "https://wpchess-production-71c8.up.railway.app" )
 
 const sendData = async ( data ) => {
     await clientWS.send( JSON.stringify( data ) )
