@@ -10,7 +10,7 @@ const API_ROOT =
 const WS_URL =
   process.env.NODE_ENV === "production"
     ? window.location.origin.replace(/^http/, "ws")
-    : "ws://localhost:4000";
+    : "https://wpchess-production-71c8.up.railway.app";
 
 export const api = axios.create({ baseURL: API_ROOT });
 export const clientWS = new WebSocket(WS_URL);
