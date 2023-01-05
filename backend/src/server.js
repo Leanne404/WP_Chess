@@ -30,6 +30,10 @@ let games = [] // list of Game object, [gameID] = {wID, bID, ...}
 let connections = [] // list of connection info, [connectionID] = {playerID}
 let playerConnections = [] // list of player info, [playerID] = {ws, gameID, connectionID}
 
+if (process.env.NODE_ENV === "development") {
+    app.use(cors());
+}
+
 if (process.env.NODE_ENV === "production") {
     const __dirname = path.resolve();
     app.use(express.static(path.join(__dirname, "../frontend", "build")));
@@ -38,9 +42,7 @@ if (process.env.NODE_ENV === "production") {
     });
 }
 
-if (process.env.NODE_ENV === "development") {
-    app.use(cors());
-}
+
 
 db.once( 'open', () => {
     console.log( 'db connected' )
