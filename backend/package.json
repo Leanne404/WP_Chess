@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon src/server.js --ext js --exec babel-node"
+    "server": "nodemon src/server.js --ext js --exec babel-node",
+    "deploy": "NODE_ENV=production babel-node src/server.js",
+    "deploy-win": "set NODE_ENV=production&&babel-node src/server.js"
   },
   "keywords": [],
   "author": "",
