@@ -1,8 +1,19 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import { message } from 'antd'
+import axios from "axios";
 
-// const SERVER_IP = '192.168.0.144'
-const clientWS = new WebSocket( "https://wpchess-production-71c8.up.railway.app" )
+const API_ROOT =
+  process.env.NODE_ENV === "production"
+    ? "/api"
+    : "https://wpchess-production-71c8.up.railway.app";
+
+const WS_URL =
+  process.env.NODE_ENV === "production"
+    ? window.location.origin.replace(/^http/, "ws")
+    : "ws://localhost:4000";
+
+export const api = axios.create({ baseURL: API_ROOT });
+export const ws = new WebSocket(WS_URL);
 
 const sendData = async ( data ) => {
     await clientWS.send( JSON.stringify( data ) )
