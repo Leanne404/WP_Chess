@@ -13,7 +13,7 @@ const WS_URL =
     : "ws://localhost:4000";
 
 export const api = axios.create({ baseURL: API_ROOT });
-export const ws = new WebSocket(WS_URL);
+export const clientWS = new WebSocket(WS_URL);
 
 const sendData = async ( data ) => {
     await clientWS.send( JSON.stringify( data ) )
